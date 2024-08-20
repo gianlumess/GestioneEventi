@@ -2,8 +2,6 @@ package gianlucamessina.entities;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
-
 @Entity //facciamo in modo che la classe sia mappata ad una tabella nel DB
 public class Evento {
     @Id //serve a dichiarare che l'attributo sarà la chiave primaria
@@ -13,7 +11,7 @@ public class Evento {
     private String titolo;
     @Column(name = "data_evento")
     @Temporal(TemporalType.DATE)
-    private Date dataEvento;
+    private String dataEvento;
     @Column(name = "descrizione")
     private String descrizione;
     @Column(name = "tipo_evento")
@@ -24,11 +22,8 @@ public class Evento {
     private Integer numeroMassimoPartecipanti;
 
     //COSTRUTTORE
-    //RIGOROSAMENTE VUOTO!!
-    public Evento() {
-    }
 
-    public Evento(String titolo, Date dataEvento, String descrizione, TipoEvento tipoEvento, Integer numeroMassimoPartecipanti) {
+    public Evento(String titolo, String dataEvento, String descrizione, TipoEvento tipoEvento, Integer numeroMassimoPartecipanti) {
         this.titolo = titolo;
         this.dataEvento = dataEvento;
         this.descrizione = descrizione;
@@ -36,7 +31,10 @@ public class Evento {
         this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
     }
 
-    //GETTER E SETTER
+    public Evento() {
+        //RIGOROSAMENTE VUOTO!!
+    }
+//GETTER E SETTER
 
 
     public long getId() {
@@ -51,11 +49,11 @@ public class Evento {
         this.titolo = titolo;
     }
 
-    public Date getDataEvento() {
+    public String getDataEvento() {
         return dataEvento;
     }
 
-    public void setDataEvento(Date dataEvento) {
+    public void setDataEvento(String dataEvento) {
         this.dataEvento = dataEvento;
     }
 
