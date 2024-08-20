@@ -1,0 +1,2 @@
+# GestioneEventi
+ java-persistence-api
