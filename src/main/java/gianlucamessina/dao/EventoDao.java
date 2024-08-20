@@ -35,4 +35,18 @@ public class EventoDao {
         if (found == null) throw new NotFoundException(eventoId);
         return found;
     }
+
+    public void deleteById(long eventoId) {
+        Evento found = this.getById(eventoId);
+
+        EntityTransaction transaction = em.getTransaction();
+
+        transaction.begin();
+
+        em.remove(found);
+
+        transaction.commit();
+
+        System.out.println("L'evento con id: " + eventoId + " è stato rimosso con successo!");
+    }
 }

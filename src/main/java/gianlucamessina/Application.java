@@ -18,7 +18,7 @@ public class Application {
         //-----------------------------SAVE---------------------------
         Evento compleanno = new Evento("festa di compleanno", "2024-09-12", "non scordatevi i regali!", TipoEvento.PRIVATO, 40);
         Evento party = new Evento("techno party", "2024-10-06", "serata solo musica techno", TipoEvento.PUBBLICO, 200);
-        /*ed.save(compleanno);*/
+        ed.save(compleanno);
         /*  ed.save(party);*/
 
 
@@ -30,6 +30,16 @@ public class Application {
             System.out.println(ex.getMessage());
         }
 
+        //-----------------------------DELETE---------------------------
 
+       /* try {
+            ed.deleteById(1);
+        } catch (NotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }*/
+
+
+        em.close();
+        emf.close();
     }
 }
