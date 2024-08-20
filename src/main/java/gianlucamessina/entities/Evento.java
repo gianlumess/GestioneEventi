@@ -2,6 +2,8 @@ package gianlucamessina.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity //facciamo in modo che la classe sia mappata ad una tabella nel DB
 public class Evento {
     @Id //serve a dichiarare che l'attributo sarà la chiave primaria
@@ -11,7 +13,7 @@ public class Evento {
     private String titolo;
     @Column(name = "data_evento")
     @Temporal(TemporalType.DATE)
-    private String dataEvento;
+    private LocalDate dataEvento;
     @Column(name = "descrizione")
     private String descrizione;
     @Column(name = "tipo_evento")
@@ -23,7 +25,7 @@ public class Evento {
 
     //COSTRUTTORE
 
-    public Evento(String titolo, String dataEvento, String descrizione, TipoEvento tipoEvento, Integer numeroMassimoPartecipanti) {
+    public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, Integer numeroMassimoPartecipanti) {
         this.titolo = titolo;
         this.dataEvento = dataEvento;
         this.descrizione = descrizione;
@@ -49,11 +51,11 @@ public class Evento {
         this.titolo = titolo;
     }
 
-    public String getDataEvento() {
+    public LocalDate getDataEvento() {
         return dataEvento;
     }
 
-    public void setDataEvento(String dataEvento) {
+    public void setDataEvento(LocalDate dataEvento) {
         this.dataEvento = dataEvento;
     }
 
