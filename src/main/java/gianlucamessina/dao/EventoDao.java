@@ -1,6 +1,7 @@
 package gianlucamessina.dao;
 
 import gianlucamessina.entities.Evento;
+import gianlucamessina.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -27,5 +28,11 @@ public class EventoDao {
         transaction.commit();
 
         System.out.println("L'evento " + evento.getTitolo() + " è stato salvato con successo!");
+    }
+
+    public Evento getById(long eventoId) {
+        Evento found = em.find(Evento.class, eventoId);
+        if (found == null) throw new NotFoundException(eventoId);
+        return found;
     }
 }
